@@ -1,0 +1,66 @@
+---
+import { getTranslations, getLangFromUrl } from '../i18n/utils';
+import { projects } from '../utils/projectsList';
+
+const t = getTranslations(Astro.url);
+const currentLang = getLangFromUrl(Astro.url);
+---
+
+<section class="mb-12">
+    <h2 class="text-xs uppercase font-bold tracking-widest text-slate-400 mb-4">
+        {t('nav.projects')}
+    </h2>
+    
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+        {projects.map((project) => {
+            const isEn = currentLang === 'en';
+            const title = isEn ? project.titleUs : project.titleRu;
+            const description = isEn ? project.descriptionUs : project.descriptionRu;
+            
+            const mainImage = project.previewUrl || (project.arrayImgUrls && project.arrayImgUrls[0]);
+
+            const projectLink = `/${currentLang}/projects/${project.slug}`;
+
+            return (
+                <a 
+                    href={projectLink} 
+                    class="flex flex-col justify-between bg-[#12141c]/80 backdrop-blur-md border border-slate-800/80 rounded-2xl p-5 hover:border-slate-700/80 transition-all group block cursor-pointer"
+                >
+                    <div>
+                        <!-- Изображение карточки -->
+                        {mainImage && (
+                            <div class="mb-4 aspect-video rounded-xl overflow-hidden bg-[#1a1d29] border border-slate-700/50 relative">
+                                <img 
+                                    src={mainImage} 
+                                    alt={title} 
+                                    class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                                    loading="lazy"
+                                />
+                            </div>
+                        )}
+
+                        <!-- Название проекта -->
+                        <h3 class="text-base font-bold text-white group-hover:text-sky-400 transition-colors mb-2">
+                            {title}
+                        </h3>
+
+                        <!-- Описание проекта -->
+                        <p class="text-xs text-slate-400 leading-relaxed mb-4 line-clamp-2">
+                            {description}
+                        </p>
+                    </div>
+
+                    <!-- Счетчик фотографий и стрелочка -->
+                    <div class="text-[10px] text-slate-500 pt-2 border-t border-slate-800/60 flex justify-between items-center">
+                        {project.arrayImgUrls && project.arrayImgUrls.length > 0 ? (
+                            <span>{project.arrayImgUrls.length} {isEn ? 'photos' : 'фото'}</span>
+                        ) : (
+                            <span>{isEn ? 'View project' : 'Подробнее'}</span>
+                        )}
+                        <span class="text-sky-400 group-hover:translate-x-1 transition-transform font-bold">→</span>
+                    </div>
+                </a>
+            );
+        })}
+    </div>
+</section>

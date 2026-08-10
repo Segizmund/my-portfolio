@@ -1,0 +1,125 @@
+---
+import { getTranslations } from '../i18n/utils';
+const t = getTranslations(Astro.url);
+---
+<section class="mb-12">
+    <h2 class="text-xs uppercase font-bold tracking-widest text-slate-400 mb-4">{t('nav.skills')}</h2>
+    
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+    
+        <!-- Backend -->
+        <div class="bg-[#12141c]/80 backdrop-blur-md border border-slate-800/80 rounded-2xl p-5 hover:border-slate-700/80 transition-all">
+            <h3 class="text-slate-400 font-medium text-xs mb-3">Backend</h3>
+            <div class="flex flex-wrap gap-2">
+                <span class="px-2.5 py-1 bg-[#1a1d29] border border-slate-700/50 rounded-lg text-xs font-semibold text-sky-400">
+                    PHP
+                </span>
+                <span class="px-2.5 py-1 bg-[#1a1d29] border border-slate-700/50 rounded-lg text-xs font-semibold text-red-400">
+                    Laravel
+                </span>
+                <span class="px-2.5 py-1 bg-[#1a1d29] border border-slate-700/50 rounded-lg text-xs font-semibold text-slate-300">
+                    Eloquent
+                </span>
+                <span class="px-2.5 py-1 bg-[#1a1d29] border border-slate-700/50 rounded-lg text-xs font-semibold text-slate-300">
+                    REST API
+                </span>
+                <span class="px-2.5 py-1 bg-[#1a1d29] border border-slate-700/50 rounded-lg text-xs font-semibold text-amber-500">
+                    Blade
+                </span>
+                <span class="px-2.5 py-1 bg-[#1a1d29] border border-slate-700/50 rounded-lg text-xs font-semibold text-orange-400">
+                    CodeIgniter
+                </span>
+                <span class="px-2.5 py-1 bg-[#1a1d29] border border-slate-700/50 rounded-lg text-xs font-semibold text-lime-400">
+                    Twig
+                </span>
+            </div>
+        </div>
+
+        <!-- Frontend -->
+        <div class="bg-[#12141c]/80 backdrop-blur-md border border-slate-800/80 rounded-2xl p-5 hover:border-slate-700/80 transition-all">
+            <h3 class="text-slate-400 font-medium text-xs mb-3">Frontend</h3>
+            <div class="flex flex-wrap gap-2">
+                <span class="px-2.5 py-1 bg-[#1a1d29] border border-slate-700/50 rounded-lg text-xs font-semibold text-yellow-400">
+                    JavaScript (ES6+)
+                </span>
+                <span class="px-2.5 py-1 bg-[#1a1d29] border border-slate-700/50 rounded-lg text-xs font-semibold text-blue-400">
+                    TypeScript
+                </span>
+                <span class="px-2.5 py-1 bg-[#1a1d29] border border-slate-700/50 rounded-lg text-xs font-semibold text-cyan-400">
+                    React
+                </span>
+                <span class="px-2.5 py-1 bg-[#1a1d29] border border-slate-700/50 rounded-lg text-xs font-semibold text-purple-400">
+                    Inertia.js
+                </span>
+                <span class="px-2.5 py-1 bg-[#1a1d29] border border-slate-700/50 rounded-lg text-xs font-semibold text-purple-300">
+                    Vit
+                </span>
+            </div>
+        </div>
+
+        <!-- UI & Cartography -->
+        <div class="bg-[#12141c]/80 backdrop-blur-md border border-slate-800/80 rounded-2xl p-5 hover:border-slate-700/80 transition-all">
+            <h3 class="text-slate-400 font-medium text-xs mb-3">UI & Cartography</h3>
+            <div class="flex flex-wrap gap-2">
+                <span class="px-2.5 py-1 bg-[#1a1d29] border border-slate-700/50 rounded-lg text-xs font-semibold text-teal-400">
+                    Tailwind CSS
+                </span>
+                <span class="px-2.5 py-1 bg-[#1a1d29] border border-slate-700/50 rounded-lg text-xs font-semibold text-purple-400">
+                    Bootstrap
+                </span>
+                <span class="px-2.5 py-1 bg-[#1a1d29] border border-slate-700/50 rounded-lg text-xs font-semibold text-sky-300">
+                    MaplibreGL
+                </span>
+                <span class="px-2.5 py-1 bg-[#1a1d29] border border-slate-700/50 rounded-lg text-xs font-semibold text-indigo-400">
+                    Web Components
+                </span>
+                <span class="px-2.5 py-1 bg-[#1a1d29] border border-slate-700/50 rounded-lg text-xs font-semibold text-emerald-300">
+                    &lt;model-viewer&gt;
+                </span>
+            </div>
+        </div>
+
+        <!-- Tools & DevOps -->
+        <div class="bg-[#12141c]/80 backdrop-blur-md border border-slate-800/80 rounded-2xl p-5 hover:border-slate-700/80 transition-all">
+            <h3 class="text-slate-400 font-medium text-xs mb-3">Tools & DevOps</h3>
+            <div class="flex flex-wrap gap-2">
+                <span class="px-2.5 py-1 bg-[#1a1d29] border border-slate-700/50 rounded-lg text-xs font-semibold text-orange-500">
+                    Git
+                </span>
+                <span class="px-2.5 py-1 bg-[#1a1d29] border border-slate-700/50 rounded-lg text-xs font-semibold text-sky-400">
+                    Docker
+                </span>
+                <span class="px-2.5 py-1 bg-[#1a1d29] border border-slate-700/50 rounded-lg text-xs font-semibold text-emerald-400">
+                    Nginx
+                </span>
+                <span class="px-2.5 py-1 bg-[#1a1d29] border border-slate-700/50 rounded-lg text-xs font-semibold text-red-400">
+                    NPM / Yarn
+                </span>
+            </div>
+        </div>
+
+        <!-- Databases -->
+        <div class="bg-[#12141c]/80 backdrop-blur-md border border-slate-800/80 rounded-2xl p-5 hover:border-slate-700/80 transition-all">
+            <h3 class="text-slate-400 font-medium text-xs mb-3">Databases</h3>
+            <div class="flex flex-wrap gap-2">
+                <span class="px-2.5 py-1 bg-[#1a1d29] border border-slate-700/50 rounded-lg text-xs font-semibold text-sky-400">
+                    MySQL
+                </span>
+                <span class="px-2.5 py-1 bg-[#1a1d29] border border-slate-700/50 rounded-lg text-xs font-semibold text-blue-500">
+                    PostgreSQL
+                </span>
+            </div>
+        </div>
+
+        <!-- Testing -->
+        <div class="bg-[#12141c]/80 backdrop-blur-md border border-slate-800/80 rounded-2xl p-5 hover:border-slate-700/80 transition-all">
+            <h3 class="text-slate-400 font-medium text-xs mb-3">Testing</h3>
+            <div class="flex flex-wrap gap-2">
+                <span class="px-2.5 py-1 bg-[#1a1d29] border border-slate-700/50 rounded-lg text-xs font-semibold text-indigo-400">
+                    PHPUnit
+                </span>
+            </div>
+        </div>
+
+    </div>
+</section>

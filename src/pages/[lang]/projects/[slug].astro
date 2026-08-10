@@ -1,0 +1,37 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import { projects } from '../../../utils/projectsList';
+
+export async function getStaticPaths() {
+    const languages = ['ru', 'en'];
+    
+    return languages.flatMap((lang) => {
+        return projects.map((project) => ({
+            params: { lang, slug: project.slug }, // Используем slug в параметрах
+            props: { project },
+        }));
+    });
+}
+
+const { lang } = Astro.params;
+const { project } = Astro.props;
+
+const isEn = lang === 'en';
+const title = isEn ? project.titleUs : project.titleRu;
+const description = isEn ? project.descriptionUs : project.descriptionRu;
+---
+
+<Layout title={`${title} \vert{} Portfolio`}>     <main class="max-w-4xl mx-auto px-4 py-8">         <a href={`/${lang}/`} class="inline-flex items-center text-xs text-sky-400 hover:underline mb-6">
+            ← {isEn ? 'Back to Projects' : 'Назад к проектам'}
+        </a>
+
+        <h1 class="text-3xl font-bold text-white mb-3">{title}</h1>
+        <p class="text-slate-400 mb-8">{description}</p>
+
+        {project.previewUrl && (
+            <div class="mb-8 rounded-2xl overflow-hidden border border-slate-800">
+                <img src={project.previewUrl} alt={title} class="w-full h-auto object-cover" />
+            </div>
+        )}
+    </main>
+</Layout>

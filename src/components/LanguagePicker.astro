@@ -1,0 +1,35 @@
+---
+import { languages } from '../i18n/ui';
+import { getLangFromUrl } from '../i18n/utils';
+
+const currentLang = getLangFromUrl(Astro.url);
+const currentPath = Astro.url.pathname;
+
+function getReplacedPath(newLang: string) {
+    const segments = currentPath.split('/').filter(Boolean);
+    if (segments[0] in languages) {
+        segments[0] = newLang;
+    } else {
+        segments.unshift(newLang);
+    }
+    return '/' + segments.join('/');
+}
+---
+
+<div class="flex items-center gap-1 bg-slate-900/80 border border-slate-800 rounded-full p-1 backdrop-blur-md">
+    {Object.entries(languages).map(([lang, label]) => {
+        const isActive = lang === currentLang;
+        return (
+        <a
+            href={getReplacedPath(lang)}
+            class={`px-2.5 py-1 text-xs font-semibold rounded-full transition duration-300 ease-linear ${
+            isActive 
+                ? 'bg-sky-500 text-white shadow-sm' 
+                : 'text-slate-400 hover:text-slate-200'
+            }`}
+        >
+            {label}
+        </a>
+        );
+    })}
+</div>

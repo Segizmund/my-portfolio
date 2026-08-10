@@ -1,0 +1,17 @@
+<!doctype html>
+<html lang="ru">
+	<head>
+		<meta charset="utf-8" />
+		<title>Максим Варава | Portfolio</title>
+		<script is:inline>
+		const userLang = navigator.language || navigator.userLanguage;
+		const primaryLang = userLang.toLowerCase().startsWith('ru') ? 'ru' : 'en';
+
+		window.location.replace('/' + primaryLang + '/');
+		</script>
+		<noscript>
+		<meta http-equiv="refresh" content="0;url=/ru/" />
+		</noscript>
+	</head>
+	<body class="bg-[#0b0c10]"></body>
+</html>
