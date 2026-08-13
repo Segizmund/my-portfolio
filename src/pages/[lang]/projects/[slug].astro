@@ -1,13 +1,14 @@
 ---
 import Layout from '../../../layouts/Layout.astro';
 import { projects } from '../../../utils/projectsList';
+import '@fancyapps/ui/dist/fancybox/fancybox.css';
 
 export async function getStaticPaths() {
     const languages = ['ru', 'en'];
     
     return languages.flatMap((lang) => {
         return projects.map((project) => ({
-            params: { lang, slug: project.slug }, // Используем slug в параметрах
+            params: { lang, slug: project.slug },
             props: { project },
         }));
     });
@@ -19,19 +20,74 @@ const { project } = Astro.props;
 const isEn = lang === 'en';
 const title = isEn ? project.titleUs : project.titleRu;
 const description = isEn ? project.descriptionUs : project.descriptionRu;
+const ogImage = project.previewUrl || (project.arrayImgUrls && project.arrayImgUrls[0]);
 ---
 
-<Layout title={`${title} \vert{} Portfolio`}>     <main class="max-w-4xl mx-auto px-4 py-8">         <a href={`/${lang}/`} class="inline-flex items-center text-xs text-sky-400 hover:underline mb-6">
+<Layout 
+    title={`${title} | Portfolio`}
+    description={description}
+    image={ogImage}
+>
+    <main class="max-w-4xl mx-auto px-4 py-8">
+        <!-- Кнопка назад -->
+        <a href={`/${lang}/`} class="inline-flex items-center text-xs text-sky-400 hover:underline mb-6">
             ← {isEn ? 'Back to Projects' : 'Назад к проектам'}
         </a>
 
+        <!-- Заголовок и описание -->
         <h1 class="text-3xl font-bold text-white mb-3">{title}</h1>
-        <p class="text-slate-400 mb-8">{description}</p>
+        <p class="text-slate-400 mb-8 leading-relaxed">{description}</p>
 
+        <!-- Главное превью -->
         {project.previewUrl && (
-            <div class="mb-8 rounded-2xl overflow-hidden border border-slate-800">
-                <img src={project.previewUrl} alt={title} class="w-full h-auto object-cover" />
+            <div class="mb-8 rounded-2xl overflow-hidden border border-slate-800/80 bg-[#12141c]">
+                <a href={project.previewUrl} data-fancybox="gallery" data-caption={title}>
+                    <img 
+                        src={project.previewUrl} 
+                        alt={title} 
+                        class="w-full h-auto object-cover max-h-[500px] cursor-zoom-in hover:opacity-90 transition-opacity" 
+                    />
+                </a>
+            </div>
+        )}
+
+        <!-- Галерея -->
+        {project.arrayImgUrls && project.arrayImgUrls.length > 0 && (
+            <div class="space-y-4 mt-8">
+                <h2 class="text-xs uppercase font-bold tracking-widest text-slate-400">
+                    {isEn ? 'Gallery' : 'Галерея'}
+                </h2>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    {project.arrayImgUrls.map((imgUrl, index) => (
+                        <div class="rounded-xl overflow-hidden border border-slate-800/80 bg-[#12141c]/80 group">
+                            <a 
+                                href={imgUrl} 
+                                data-fancybox="gallery" 
+                                data-caption={`${title} — ${isEn ? 'Photo' : 'Фото'} ${index + 1}`}
+                                class="block cursor-zoom-in overflow-hidden"
+                            >
+                                <img 
+                                    src={imgUrl} 
+                                    alt={`${title} ${index + 1}`} 
+                                    class="w-full h-auto object-cover group-hover:scale-105 transition-transform duration-300" 
+                                    loading="lazy"
+                                />
+                            </a>
+                        </div>
+                    ))}
+                </div>
             </div>
         )}
     </main>
 </Layout>
+
+<script>
+    import { Fancybox } from "@fancyapps/ui";
+
+    Fancybox.bind("[data-fancybox='gallery']", {
+        Hash: false,
+        Thumbs: {
+        autoStart: false,
+        },
+    });
+</script>
