@@ -1,0 +1,32 @@
+import type { AstroComponentFactory } from 'astro/runtime/server/index.js';
+import * as Icons from './index';
+
+export const iconMap: Record<string, AstroComponentFactory> = {
+    'astro': Icons.AstroIcon,
+    'blade': Icons.BladeIcon,
+    'bootstrap': Icons.BootstrapIcon,
+    'codeigniter': Icons.CodeIgniterIcon,
+    'docker': Icons.DockerIcon,
+    'eloquent': Icons.EloquentIcon,
+    'git': Icons.GitIcon,
+    'inertia': Icons.InertiaIcon,
+    'js': Icons.JsIcon,
+    'laravel': Icons.LaravelIcon,
+    'maplibre': Icons.MaplibreIcon,
+    'model-viewer': Icons.ModelViewerIcon,
+    'mysql': Icons.MySQLIcon,
+    'nginx': Icons.NginxIcon,
+    'npm': Icons.NpmIcon,
+    'php': Icons.PhpIcon,
+    'phpunit': Icons.PHPUnitIcon,
+    'postgresql': Icons.PostgreSQLIcon,
+    'react': Icons.ReactIcon,
+    'rest-api': Icons.RestApiIcon,
+    'tailwind': Icons.TailwindIcon,
+    'ts': Icons.TsIcon,
+    'twig': Icons.TwigIcon,
+    'vite': Icons.ViteIcon,
+    'web-components': Icons.WebComponentsIcon,
+    'yarn': Icons.YarnIcon,
+    'react-zoom-pan-pinch': Icons.ZoomPinchIcon,
+};
