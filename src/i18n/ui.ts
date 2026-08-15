@@ -23,6 +23,15 @@ export const ui = {
         'about.me': 'Full-Stack разработчик с 3 годами опыта. Запустил 10+ веб-сервисов с нуля: ERP-системы, 3D-картографию и порталы для 1500+ пользователей. Проектирую архитектуру для автоматизации бизнес-процессов: разработка SPA/ERP систем, ролевые модели (RBAC), интерактивные 2D/3D карты и интеграция с внешними API.',
     
         'links.title' : 'Ссылки',
+
+        'project.stack' : 'Стек технологий',
+        'project.tasks' : 'Основные задачи и функции',
+        'project.gallery' : 'Галерея',
+        'project.back' : 'Назад к проектам',
+
+        'category.main': 'Основные проекты',
+        'category.pet-project': 'Пет-проекты',
+        'category.freelance': 'Фриланс',
     },
     en: {
         'seo.siteName': 'Maksim Varava | Portfolio',
@@ -41,5 +50,14 @@ export const ui = {
         'about.me': 'Full-Stack Developer with 3 years of experience. Built 10+ web services from scratch: ERP systems, 3D interactive maps, and enterprise portals for 1500+ users. Design scalable architecture for business process automation: SPA/ERP development, RBAC access control models, interactive 2D/3D maps, and REST API integrations.',
     
         'links.title' : 'Links',
+
+        'project.stack' : 'Technology stack',
+        'project.tasks' : 'Key Tasks & Features',
+        'project.gallery' : 'Gallery',
+        'project.back' : 'Back to Projects',
+
+        'category.main': 'Main Projects',
+        'category.pet-project': 'Pet Projects',
+        'category.freelance': 'Freelance',
     },
 } as const;
