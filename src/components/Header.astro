@@ -1,13 +1,15 @@
 ---
 import { getTranslations } from '../i18n/utils';
 import LanguagePicker from '../components/LanguagePicker.astro';
+
+const { lang } = Astro.params;
 const t = getTranslations(Astro.url);
 ---
 
 <header class="flex justify-between items-center mb-10 pb-6 border-b border-slate-800/60">
-    <div>
+    <a href={`/${lang}/`} class="hover:scale-110 transition duration-300 ease-linear">
     <h1 class="text-xl font-bold tracking-wider text-white uppercase">{t('name')}</h1>
     <p class="text-xs text-sky-400 font-medium uppercase">{t('hero.title')}</p>
-    </div>
+    </a>
     <LanguagePicker />
 </header>
