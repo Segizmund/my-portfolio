@@ -9,6 +9,7 @@ previewUrl: "/projects/floor-map/preview.jpg"
 arrayImgUrls:
   - "/projects/floor-map/slide-1.jpg"
   - "/projects/floor-map/slide-2.jpg"
+  - "/projects/floor-map/slide-3.jpg"
 aboutRu: |
   Данный проект предназначен для упрощения внутренней навигации по корпусам и этажам университета. Система позволяет быстро находить аудитории, кабинеты административных служб и преподавателей, а также изучать поэтажные схемы зданий в интерактивном режиме.
 aboutUs: |
