@@ -116,23 +116,29 @@ const ogImage = project.previewUrl || (project.arrayImgUrls && project.arrayImgU
                     {t('project.gallery')}
                 </h2>
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                    {project.arrayImgUrls.map((imgUrl, index) => (
-                        <div class="rounded-xl overflow-hidden border border-slate-800/80 bg-[#12141c]/80 group">
-                            <a 
-                                href={imgUrl} 
-                                data-fancybox="gallery" 
-                                data-caption={`${title} — ${isEn ? 'Photo' : 'Фото'} ${index + 1}`}
-                                class="block cursor-zoom-in overflow-hidden"
-                            >
-                                <img 
-                                    src={imgUrl} 
-                                    alt={`${title} ${index + 1}`} 
-                                    class="w-full h-auto object-cover group-hover:scale-105 transition-transform duration-300" 
-                                    loading="lazy"
-                                />
-                            </a>
-                        </div>
-                    ))}
+                    {project.arrayImgUrls.map((imgUrl, index) => {
+                        const isLast = index === project.arrayImgUrls.length - 1;
+                        const isOdd = project.arrayImgUrls.length % 2 !== 0;
+                        const shouldBeFullWidth = isLast && isOdd;
+                        
+                        return (
+                            <div class={`${shouldBeFullWidth ? 'col-span-2' : 'col-span-1'} rounded-xl overflow-hidden border border-slate-800/80 bg-[#12141c]/80 group`}>
+                                <a 
+                                    href={imgUrl} 
+                                    data-fancybox="gallery" 
+                                    data-caption={`${title} — ${isEn ? 'Photo' : 'Фото'} ${index + 1}`}
+                                    class="block cursor-zoom-in overflow-hidden"
+                                >
+                                    <img 
+                                        src={imgUrl} 
+                                        alt={`${title} ${index + 1}`} 
+                                        class="w-full h-auto object-cover group-hover:scale-105 transition-transform duration-300" 
+                                        loading="lazy"
+                                    />
+                                </a>
+                            </div>
+                        );
+                    })}
                 </div>
             </div>
         )}
