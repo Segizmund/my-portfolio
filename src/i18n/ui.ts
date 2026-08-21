@@ -32,6 +32,8 @@ export const ui = {
         'category.main': 'Основные проекты',
         'category.pet-project': 'Пет-проекты',
         'category.freelance': 'Фриланс',
+
+        'common.photos' : 'Фото',
     },
     en: {
         'seo.siteName': 'Maksim Varava | Portfolio',
@@ -59,5 +61,7 @@ export const ui = {
         'category.main': 'Main Projects',
         'category.pet-project': 'Pet Projects',
         'category.freelance': 'Freelance',
+
+        'common.photos' : 'Photos',
     },
 } as const;
