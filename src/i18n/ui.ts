@@ -34,6 +34,8 @@ export const ui = {
         'category.freelance': 'Фриланс',
 
         'common.photos' : 'Фото',
+
+        'link.title' : 'Ссылка на ресурс',
     },
     en: {
         'seo.siteName': 'Maksim Varava | Portfolio',
@@ -63,5 +65,7 @@ export const ui = {
         'category.freelance': 'Freelance',
 
         'common.photos' : 'Photos',
+
+        'link.title' : 'Link to resource',
     },
 } as const;
