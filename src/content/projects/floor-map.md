@@ -1,4 +1,5 @@
 ---
+order: 2
 id: "project-floor-map"
 category: "main"
 titleRu: "Интерактивная карта этажей университета"
@@ -33,4 +34,5 @@ stack:
   - "ts"
   - "tailwind"
   - "react-zoom-pan-pinch"
+  - "vite"
 ---
