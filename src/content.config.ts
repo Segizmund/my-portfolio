@@ -9,8 +9,10 @@ const taskSchema = z.object({
 const projectsCollection = defineCollection({
     loader: glob({ pattern: '**/*.md', base: './src/content/projects' }),
     schema: z.object({
+        order: z.number().optional().default(99),
         id: z.string(),
         category: z.enum(['main', 'freelance', 'pet-project']).default('main'),
+        link: z.string(),
         titleRu: z.string(),
         titleUs: z.string(),
         descriptionRu: z.string(),
