@@ -9,7 +9,6 @@ const isEn = currentLang === 'en';
 
 const projectsCollection = await getCollection('projects');
 
-// Массив ключей категорий в нужном порядке отображения
 const categories = [
     { key: 'main', labelKey: 'category.main' },
     { key: 'pet-project', labelKey: 'category.pet-project' },
@@ -24,9 +23,9 @@ const categories = [
     
     <div class="space-y-10">
         {categories.map((cat) => {
-            const categoryProjects = projectsCollection.filter(
-                (item) => item.data.category === cat.key
-            );
+            const categoryProjects = projectsCollection
+                .filter((item) => item.data.category === cat.key)
+                .sort((a, b) => (a.data.order ?? 99) - (b.data.order ?? 99));
 
             if (categoryProjects.length === 0) return null;
 
@@ -55,11 +54,17 @@ const categories = [
                                     <div>
                                         {mainImage && (
                                             <div class="mb-4 aspect-video rounded-xl overflow-hidden bg-[#1a1d29] border border-slate-700/50 relative">
+                                                <div class="gallery-skeleton absolute inset-0 bg-slate-800/50 animate-pulse flex items-center justify-center">
+                                                    <svg class="w-6 h-6 text-slate-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                                                    </svg>
+                                                </div>
                                                 <img 
                                                     src={mainImage} 
                                                     alt={title} 
-                                                    class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                                                    class="w-full h-full object-cover opacity-0 group-hover:scale-110 transition-all duration-500 ease-out"
                                                     loading="lazy"
+                                                    onload="this.classList.remove('opacity-0'); this.closest('.group').querySelector('.gallery-skeleton')?.classList.add('hidden');"
                                                 />
                                             </div>
                                         )}
@@ -82,7 +87,7 @@ const categories = [
 
                                     <div class="text-[10px] text-slate-500 pt-2 border-t border-slate-800/60 flex justify-between items-center">
                                         {project.arrayImgUrls && project.arrayImgUrls.length > 0 ? (
-                                            <span>{project.arrayImgUrls.length} {isEn ? 'photos' : 'фото'}</span>
+                                            <span>{t('common.photos')} ({project.arrayImgUrls.length})</span>
                                         ) : (
                                             <span>{t('projects.more')}</span>
                                         )}
