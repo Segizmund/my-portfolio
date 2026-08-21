@@ -47,6 +47,15 @@ const ogImage = project.previewUrl || (project.arrayImgUrls && project.arrayImgU
         <h1 class="text-3xl font-bold text-white mb-3">{title}</h1>
         <p class="text-slate-400 mb-6 leading-relaxed">{description}</p>
 
+        {project?.link && (
+            <div class="flex flex-col gap-3 mb-5">
+                <h2 class="text-xs uppercase font-bold tracking-widest text-slate-400">
+                    {t('link.title')}
+                </h2>
+                <a href={project.link} class="text-blue-600 w-fit hover:text-blue-400 transition duration-300 ease-linear border-b border-transparent hover:border-blue-400">{project.link}</a>
+            </div>
+        )}
+
         <!-- Стек технологий -->
         {project.stack && project.stack.length > 0 && (
             <div class="mb-8">
